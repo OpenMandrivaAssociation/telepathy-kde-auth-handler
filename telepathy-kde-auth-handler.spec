@@ -1,27 +1,29 @@
-%define rel 1
+%define srcname ktp-auth-handler
 
 Summary:        UI/Kwallet Integration for telepathy-kde
 Name:           telepathy-kde-auth-handler
-Version:        0.2.0
-Release:        %mkrel  %{rel}
-Url:            https://projects.kde.org/projects/playground/network/telepathy/telepathy-auth-handler
-Source0:        ftp://ftp.gtlib.cc.gatech.edu/pub/kde/unstable/telepathy-kde/%version/src/%name-%version.tar.bz2
-License:        GPLv2+
-Group:          Graphical desktop/KDE
-BuildRequires:  kdelibs4-devel
-BuildRequires:  telepathy-qt4-devel
+Version:	0.5.1
+Release:	1
+Url:		https://projects.kde.org/projects/playground/network/telepathy/telepathy-auth-handler
+Source0:	ftp://ftp.gtlib.cc.gatech.edu/pub/kde/unstable/telepathy-kde/%version/src/%srcname-%version.tar.bz2
+License:	GPLv2+
+Group:		Networking/Instant messaging 
+BuildRequires:	telepathy-kde-common-internals-devel
+BuildRequires:	pkgconfig(QJson)
+Requires:	telepathy-kde-common-internals-core
 
 %description
 Provide UI/KWallet Integration For Passwords and SSL Errors on Account Connect
 
-%files -f telepathy-auth-handler.lang
-%{_kde_libdir}/kde4/libexec/telepathy-kde-auth-handler
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.KDE.SASLHandler.service
-%{_kde_datadir}/telepathy/clients/KDE.SASLHandler.client
-#--------------------------------------------------------------------
+%files -f ktp-auth-handler.lang
+%{_kde_libdir}/kde4/libexec/ktp-auth-handler
+%{_datadir}/telepathy/clients/KTp.SASLHandler.client
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.KTp.SASLHandler.service
+
+#------------------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q -n %srcname-%version
 
 %build
 %cmake_kde4
@@ -29,7 +31,4 @@ Provide UI/KWallet Integration For Passwords and SSL Errors on Account Connect
 
 %install
 %makeinstall_std -C build
-%find_lang telepathy-auth-handler
-
-
-
+%find_lang ktp-auth-handler
