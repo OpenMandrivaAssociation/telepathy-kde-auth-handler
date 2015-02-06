@@ -3,7 +3,7 @@
 Summary:	UI/Kwallet Integration for telepathy-kde
 Name:		telepathy-kde-auth-handler
 Version:	0.5.1
-Release:	2
+Release:	3
 Url:		https://projects.kde.org/projects/playground/network/telepathy/telepathy-auth-handler
 Source0:	ftp://ftp.gtlib.cc.gatech.edu/pub/kde/unstable/telepathy-kde/%version/src/%srcname-%version.tar.bz2
 License:	GPLv2+
